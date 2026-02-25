@@ -53,7 +53,7 @@ export const DELIVERABLES = [
   },
   {
     label: "Both PDU's labeled Correctly",
-    images: ["/deliverable-examples/.jpg"],
+    images: ["/deliverable-examples/pdu-1-2-labeled.png"],
   },
   {
     label: "SW1 & SW2 ports 5\u20139 capped",

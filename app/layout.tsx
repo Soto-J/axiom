@@ -6,6 +6,7 @@ import { ThemeProvider } from "@/components/theme-provider";
 import { TooltipProvider } from "@/components/ui/tooltip";
 
 import "./globals.css";
+import { SidebarProvider } from "@/components/ui/sidebar";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -33,7 +34,12 @@ export default function RootLayout({
         className={cn("antialiased", geistSans.variable, geistMono.variable)}
       >
         <ThemeProvider defaultTheme="dark">
-          <TooltipProvider>{children}</TooltipProvider>
+          <SidebarProvider>
+            <TooltipProvider>
+              <SidebarTrigger />
+              <main>{children}</main>
+            </TooltipProvider>
+          </SidebarProvider>
         </ThemeProvider>
       </body>
     </html>
