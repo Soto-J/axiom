@@ -2,7 +2,7 @@ import Image from "next/image";
 
 import { File } from "lucide-react";
 import {
-  after_tech_arrives_on_site,
+  AFTER_TECH_ARRIVES_ON_SITE,
   DELIVERABLES,
   PRE_CHECK_IN,
 } from "@/lib/constants";
@@ -38,7 +38,7 @@ export default function Home() {
           <Checklist title="Pre Checkin" list={PRE_CHECK_IN} />
           <Checklist
             title="After tech confirmed hes on site"
-            list={after_tech_arrives_on_site}
+            list={AFTER_TECH_ARRIVES_ON_SITE}
           />
           <div className="col-span-2">
             <Checklist title="Deliverables" list={DELIVERABLES} />

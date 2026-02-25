@@ -5,7 +5,7 @@ export const PRE_CHECK_IN = [
   { label: "Create chat in dialpad", description: "" },
 ];
 
-export const after_tech_arrives_on_site = [
+export const AFTER_TECH_ARRIVES_ON_SITE = [
   { label: "Confirmned an OTP or Manager is on site" },
   { label: "Confirmned site is in backup mode" },
   { label: "Received photos of open box equipment" },
@@ -34,7 +34,10 @@ export const DELIVERABLES = [
   },
   {
     label: `PDU1 & PDU2 installed at correct U-count for rack type (77" 8U 1 & U32 / 82" U34 & U28)`,
-    images: [],
+    images: [
+      "/deliverable-examples/77-inch-pdu-2-placement.jpg",
+      "/deliverable-examples/82-inch-pdu-2-placement.jpg",
+    ],
   },
   {
     label: "PDU cables routed over the top only",
@@ -48,7 +51,10 @@ export const DELIVERABLES = [
     label: "Both SW1 + SW2 Labeled Correctly",
     images: ["/deliverable-examples/switch-1-2-labeled.jpg"],
   },
-  { label: "Both PDU's labeled Correctly", images: [] },
+  {
+    label: "Both PDU's labeled Correctly",
+    images: ["/deliverable-examples/.jpg"],
+  },
   {
     label: "SW1 & SW2 ports 5\u20139 capped",
     images: ["/deliverable-examples/switches-5-9-black-capped.jpg"],
@@ -59,7 +65,7 @@ export const DELIVERABLES = [
   },
   {
     label: `8U rack layout match standard (77" Inch Only)`,
-    images: [],
+    images: ["/deliverable-examples/77-network-rack-format.jpg"],
   },
   {
     label: "Biscuit boxes labeled EXACTLY per standard (Panduit Used)",

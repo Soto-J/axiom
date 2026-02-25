@@ -49,20 +49,17 @@ export default function Checklist({ title, list }: ChecklistProps) {
 
             {images && images?.length > 0 && (
               <TooltipContent
-              side="left"
-                className={cn(
-                  "grid p-0 shadow-2xl",
-                  images.length > 1 ? "grid-cols-2" : "grid-cols-1",
-                )}
+                side="left"
+                className="grid grid-cols-1 p-0 shadow-2xl"
               >
                 {images.map((src) => (
                   <Image
                     key={src}
                     src={src}
                     alt="deliverable"
-                    height={375}
                     width={375}
-                    className="border"
+                    height={375}
+                    className="w-93.75 h-auto border"
                   />
                 ))}
               </TooltipContent>
