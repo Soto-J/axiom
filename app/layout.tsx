@@ -1,11 +1,16 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import { cn } from "@/lib/utils";
-
 import { ThemeProvider } from "@/components/theme-provider";
 import { TooltipProvider } from "@/components/ui/tooltip";
+import { SidebarInset, SidebarProvider } from "@/components/ui/sidebar";
+
+import { SidebarTrigger } from "@/components/ui/sidebar";
+
+import { AppSidebar } from "@/components/app-sidebar";
 
 import "./globals.css";
+import AppHeader from "@/components/app-header";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -32,8 +37,19 @@ export default function RootLayout({
       <body
         className={cn("antialiased", geistSans.variable, geistMono.variable)}
       >
-        <ThemeProvider defaultTheme="dark">
-          <TooltipProvider>{children}</TooltipProvider>
+        <ThemeProvider attribute="class" defaultTheme="dark" enableSystem>
+          <TooltipProvider>
+            <SidebarProvider>
+              <AppSidebar />
+
+              <SidebarInset>
+                <main>
+                  <AppHeader />
+                  {children}
+                </main>
+              </SidebarInset>
+            </SidebarProvider>
+          </TooltipProvider>
         </ThemeProvider>
       </body>
     </html>
