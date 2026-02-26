@@ -69,7 +69,9 @@ export function AppSidebar() {
                       "text-muted-foreground",
                     )}
                   >
-                    <span className="font-medium tracking-tight">{label}</span>
+                    <span className="font-semibold tracking-tight">
+                      {label}
+                    </span>
 
                     {pathname === href && (
                       <ChevronRight

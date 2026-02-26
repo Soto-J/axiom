@@ -1,5 +1,5 @@
-import React from "react";
+import ScheduleView from "@/modules/schedule/ui/views/schedule-view";
 
 export default function SchedulePage() {
-  return <div>SchedulePage</div>;
+  return <ScheduleView />;
 }

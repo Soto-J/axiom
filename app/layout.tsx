@@ -5,8 +5,6 @@ import { ThemeProvider } from "@/components/theme-provider";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import { SidebarInset, SidebarProvider } from "@/components/ui/sidebar";
 
-import { SidebarTrigger } from "@/components/ui/sidebar";
-
 import { AppSidebar } from "@/components/app-sidebar";
 
 import "./globals.css";

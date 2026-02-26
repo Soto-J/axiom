@@ -1,10 +1,10 @@
 import UnderConstruction from "@/components/under-construction";
 
-export default function Home() {
+export default function ScheduleView() {
   return (
-    <div className="flex min-h-screen items-center justify-center font-sans">
+    <div>
       <UnderConstruction
-        title="Home View"
+        title="Schedule View"
         message="Stay tuned! We're working hard to deliver an exceptional experience"
       />
     </div>
