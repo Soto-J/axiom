@@ -15,22 +15,21 @@ export default function CheckListView() {
       <div className="mb-4 flex items-center justify-between">
         <h1 className="text-3xl font-bold">Check List</h1>
 
-        <h2 className="flex items-center">
-          <div>
-            <span className="font-semibold">View Documentation</span>
-            <Button asChild variant="ghost" className="cursor-pointer">
-              <a
-                href="/axiom-docs.pdf"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                <File />
-              </a>
-            </Button>
-          </div>
+        <div className="flex items-center">
+          <Button variant="ghost" className="cursor-pointer">
+            <a
+              href="/axiom-docs.pdf"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="flex items-center gap-x-2"
+            >
+              <span className="font-semibold">View Documentation</span>
+              <File />
+            </a>
+          </Button>
 
           <FaqSheet />
-        </h2>
+        </div>
       </div>
 
       <div className="grid grid-cols-2 gap-4">
