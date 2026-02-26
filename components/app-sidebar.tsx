@@ -44,7 +44,7 @@ export function AppSidebar() {
   const pathname = usePathname();
 
   return (
-    <Sidebar variant="inset">
+    <Sidebar id="main-sidebar" variant="inset">
       <SidebarHeader className="flex items-center justify-center">
         <Image
           src="/axiom-logo.png"

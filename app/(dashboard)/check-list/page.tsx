@@ -16,17 +16,18 @@ export default function CheckListPage() {
 
         <h2 className="flex items-center">
           <span className="font-semibold">View Documentation</span>
-          <a href="/axiom-docs.pdf" target="_blank" rel="noopener noreferrer">
-            <Button variant="ghost" className="cursor-pointer">
+          <Button asChild variant="ghost" className="cursor-pointer">
+            <a href="/axiom-docs.pdf" target="_blank" rel="noopener noreferrer">
               <File />
-            </Button>
-          </a>
+            </a>
+          </Button>
         </h2>
       </div>
+
       <div className="grid grid-cols-2 gap-4">
         <Checklist title="Pre Checkin" list={PRE_CHECK_IN} />
         <Checklist
-          title="After tech confirmed hes on site"
+          title="After tech confirmed he's on site"
           list={AFTER_TECH_ARRIVES_ON_SITE}
         />
         <div className="col-span-2">
