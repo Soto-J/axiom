@@ -112,7 +112,7 @@ export const DELIVERABLES = [
     images: ["/deliverable-examples/switch-1-2-labeled.jpg"],
   },
   {
-    label: "Both PDU's labeled Correctly",
+    label: "Both PDU's labeled Correctly and plugged into back of UPS",
     images: ["/deliverable-examples/pdu-1-2-labeled.png"],
   },
   {

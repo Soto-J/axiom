@@ -24,7 +24,7 @@ export default function FaqSheet() {
         </Button>
       </SheetTrigger>
 
-      <SheetContent className="overflow-y-auto sm:max-w-lg">
+      <SheetContent side="right" className="overflow-y-auto sm:max-w-lg">
         <SheetHeader>
           <SheetTitle className="text-xl">FAQ / Guidelines</SheetTitle>
           <SheetDescription>
