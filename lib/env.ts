@@ -12,9 +12,9 @@ const EnvSchema = z.object({
   BETTER_AUTH_SECRET: z.string(),
   BETTER_AUTH_URL: z.string(),
   NEXT_PUBLIC_APP_URL: z.string(),
-  SUPERBASE_URL: z.string(),
-  SUPERBASE_DATABASE_URL: z.string(),
-  SUPERBASE_API_KEY: z.string(),
+  SUPABASE_URL: z.string(),
+  SUPABASE_API_KEY: z.string(),
+  SUPABASE_DATABASE_URL: z.string(),
   SUPABASE_SECRET: z.string(),
 });
 
