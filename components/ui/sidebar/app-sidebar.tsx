@@ -7,7 +7,7 @@ import { usePathname } from "next/navigation";
 import { cn } from "@/lib/utils";
 import { ChevronRight } from "lucide-react";
 
-import { Separator } from "./ui/separator";
+import { Separator } from "@/components/ui/separator";
 import {
   Sidebar,
   SidebarContent,
@@ -40,7 +40,7 @@ const firstSection = [
   },
 ];
 
-export function AppSidebar() {
+export default function AppSidebar() {
   const pathname = usePathname();
 
   return (
