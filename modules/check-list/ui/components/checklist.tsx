@@ -5,7 +5,11 @@ import Image from "next/image";
 import { cn } from "@/lib/utils";
 
 import { Checkbox } from "@/components/ui/checkbox";
-import { Tooltip, TooltipContent, TooltipTrigger } from "./ui/tooltip";
+import {
+  Tooltip,
+  TooltipContent,
+  TooltipTrigger,
+} from "@/components/ui/tooltip";
 
 interface ChecklistProps {
   title: string;
@@ -59,7 +63,7 @@ export default function Checklist({ title, list }: ChecklistProps) {
                     alt="deliverable"
                     width={375}
                     height={375}
-                    className="w-93.75 h-auto border"
+                    className="h-auto w-93.75 border"
                   />
                 ))}
               </TooltipContent>

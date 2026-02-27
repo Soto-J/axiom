@@ -5,7 +5,7 @@ import {
   PRE_CHECK_IN,
 } from "@/lib/constants";
 
-import Checklist from "@/components/checklist";
+import Checklist from "@/modules/check-list/ui/components/checklist";
 import { Button } from "@/components/ui/button";
 import FaqSheet from "@/modules/check-list/ui/components/faq-sheet";
 
