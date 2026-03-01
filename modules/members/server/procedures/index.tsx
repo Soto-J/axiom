@@ -4,7 +4,7 @@ import { getOneProcedure } from "./get-one";
 import { getManyProcedure } from "./get-many";
 import { deleteProcedure } from "./delete";
 
-export const rosterRouter = createTRPCRouter({
+export const membersRouter = createTRPCRouter({
   getOne: getOneProcedure,
   getMany: getManyProcedure,
   delete: deleteProcedure,

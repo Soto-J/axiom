@@ -9,4 +9,6 @@ export default defineConfig({
   dbCredentials: {
     url: env.SUPABASE_DATABASE_URL,
   },
+  tablesFilter: ["!_*"],
+  schemaFilter: ["public"],
 });
