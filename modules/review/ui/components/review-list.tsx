@@ -3,12 +3,12 @@
 import { useEffect, useState } from "react";
 import { useQuery, useMutation, useQueryClient } from "@tanstack/react-query";
 import { useTRPC } from "@/lib/trpc/client";
-import { supabaseClient } from "@/lib/supabase/supabase-client";
+import { getSupabaseClient } from "@/lib/supabase/supabase-client";
 import { DELIVERABLES } from "@/lib/constants";
 import { cn } from "@/lib/utils";
 
 import { Button } from "@/components/ui/button";
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { Card, CardContent } from "@/components/ui/card";
 import { CheckCircle, XCircle, Clock, ImageIcon } from "lucide-react";
 
 type Status = "pending" | "approved" | "rejected";
@@ -148,8 +148,9 @@ export default function ReviewList() {
   // Real-time: new uploads appear without refresh
   useEffect(() => {
     const invalidate = () => queryClient.invalidateQueries(queryOptions);
+    const supabase = getSupabaseClient();
 
-    const channel = supabaseClient
+    const channel = supabase
       .channel("deliverables:all")
       .on(
         "postgres_changes",
@@ -164,7 +165,7 @@ export default function ReviewList() {
       .subscribe();
 
     return () => {
-      supabaseClient.removeChannel(channel);
+      supabase.removeChannel(channel);
     };
   }, [queryClient, queryOptions]);
 

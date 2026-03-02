@@ -3,7 +3,7 @@
 import { useRef, useState, useEffect } from "react";
 import { useQuery, useQueryClient } from "@tanstack/react-query";
 import { useTRPC } from "@/lib/trpc/client";
-import { supabaseClient } from "@/lib/supabase/supabase-client";
+import { getSupabaseClient } from "@/lib/supabase/supabase-client";
 import { DELIVERABLES } from "@/lib/constants";
 import { cn } from "@/lib/utils";
 
@@ -161,7 +161,8 @@ export default function DeliverableUpload() {
   useEffect(() => {
     if (!siteCode) return;
 
-    const channel = supabaseClient
+    const supabase = getSupabaseClient();
+    const channel = supabase
       .channel(`deliverables:site:${siteCode}`)
       .on(
         "postgres_changes",
@@ -176,7 +177,7 @@ export default function DeliverableUpload() {
       .subscribe();
 
     return () => {
-      supabaseClient.removeChannel(channel);
+      supabase.removeChannel(channel);
     };
   }, [siteCode, queryClient, queryOptions]);
 
