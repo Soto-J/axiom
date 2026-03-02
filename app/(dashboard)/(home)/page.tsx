@@ -1,12 +1,9 @@
-import UnderConstruction from "@/components/under-construction";
+import HomeView from "@/modules/home/ui/views/home-view";
 
 export default function Home() {
   return (
-    <div className="flex min-h-screen items-center justify-center font-sans">
-      <UnderConstruction
-        title="Home View"
-        message="Stay tuned! We're working hard to deliver an exceptional experience"
-      />
+    <div className="font-sans">
+      <HomeView />
     </div>
   );
 }

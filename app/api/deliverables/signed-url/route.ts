@@ -1,41 +1,48 @@
-import { headers } from "next/headers";
 import { NextResponse } from "next/server";
-
-import { eq, and } from "drizzle-orm";
+import { eq } from "drizzle-orm";
 
 import { supabaseAdmin } from "@/lib/supabase/supabase-server";
-
-import { auth } from "@/lib/auth";
 import { db } from "@/lib/db";
-import { deliverablesTable } from "@/lib/db/schema";
+import { deliverableTable } from "@/lib/db/schema";
+
+const BUCKET = "images";
 
 export async function POST(req: Request) {
-  const session = await auth.api.getSession({ headers: await headers() });
-
-  if (!session?.user?.id) {
-    return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
+  let body: unknown;
+  try {
+    body = await req.json();
+  } catch {
+    return NextResponse.json({ error: "Malformed JSON" }, { status: 400 });
   }
 
-  const { path } = await req.json();
+  const { path } = body as { path?: unknown };
 
   if (!path || typeof path !== "string") {
     return NextResponse.json({ error: "Missing path" }, { status: 400 });
   }
 
-  const userId = session.user.id;
-  // IMPORTANT: verify ownership (recommended)
-  // const row = await db.query.imagesTable.findFirst({
-  //   where: and(eq(imagesTable.ownerId, userId), eq(imagesTable.path, path)),
-  // });
-  // if (!row) return NextResponse.json({ error: "Not found" }, { status: 404 });
+  if (path.includes("..") || path.startsWith("/")) {
+    return NextResponse.json({ error: "Invalid path" }, { status: 400 });
+  }
 
-  // const { data, error } = await supabaseAdmin.storage
-  //   .from("images")
-  //   .createSignedUrl(path, 60); // seconds
+  // Verify the path belongs to a known deliverable — prevents signing arbitrary objects
+  const row = await db
+    .select({ id: deliverableTable.id })
+    .from(deliverableTable)
+    .where(eq(deliverableTable.path, path))
+    .limit(1);
 
-  // if (error) {
-  //   return NextResponse.json({ error: error.message }, { status: 500 });
-  // }
+  if (row.length === 0) {
+    return NextResponse.json({ error: "Not found" }, { status: 404 });
+  }
 
-  // return NextResponse.json({ url: data.signedUrl });
+  const { data, error } = await supabaseAdmin.storage
+    .from(BUCKET)
+    .createSignedUrl(path, 300); // 5-minute expiry
+
+  if (error) {
+    return NextResponse.json({ error: error.message }, { status: 500 });
+  }
+
+  return NextResponse.json({ signedUrl: data.signedUrl });
 }

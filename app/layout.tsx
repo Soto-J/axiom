@@ -2,12 +2,11 @@ import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import { cn } from "@/lib/utils";
 
-import { ThemeProvider } from "@/components/theme-provider";
-import { TooltipProvider } from "@/components/ui/tooltip";
-import { SidebarInset, SidebarProvider } from "@/components/ui/sidebar";
+import Providers from "@/components/providers";
 
 import AppHeader from "@/components/app-header";
 import AppSidebar from "@/components/ui/sidebar/app-sidebar";
+import { SidebarInset } from "@/components/ui/sidebar";
 
 import "./globals.css";
 
@@ -36,20 +35,16 @@ export default function RootLayout({
       <body
         className={cn("antialiased", geistSans.variable, geistMono.variable)}
       >
-        <ThemeProvider attribute="class" defaultTheme="dark" enableSystem>
-          <TooltipProvider>
-            <SidebarProvider>
-              <AppSidebar />
+        <Providers>
+          <AppSidebar />
 
-              <SidebarInset>
-                <main>
-                  <AppHeader />
-                  {children}
-                </main>
-              </SidebarInset>
-            </SidebarProvider>
-          </TooltipProvider>
-        </ThemeProvider>
+          <SidebarInset>
+            <main>
+              <AppHeader />
+              {children}
+            </main>
+          </SidebarInset>
+        </Providers>
       </body>
     </html>
   );
