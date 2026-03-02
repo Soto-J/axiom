@@ -147,12 +147,19 @@ export default function ReviewList() {
 
   // Real-time: new uploads appear without refresh
   useEffect(() => {
+    const invalidate = () => queryClient.invalidateQueries(queryOptions);
+
     const channel = supabaseClient
       .channel("deliverables:all")
       .on(
         "postgres_changes",
         { event: "INSERT", schema: "public", table: "deliverables" },
-        () => queryClient.invalidateQueries(queryOptions),
+        invalidate,
+      )
+      .on(
+        "postgres_changes",
+        { event: "UPDATE", schema: "public", table: "deliverables" },
+        invalidate,
       )
       .subscribe();
 
