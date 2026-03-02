@@ -38,6 +38,10 @@ const firstSection = [
     href: "/check-list",
     // roles: ["guest", "user", "staff", "admin"],
   },
+  {
+    label: "Review",
+    href: "/review",
+  },
 ];
 
 export default function AppSidebar() {
