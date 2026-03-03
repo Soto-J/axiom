@@ -16,6 +16,8 @@ const EnvSchema = z.object({
   SUPABASE_API_KEY: z.string(),
   SUPABASE_DATABASE_URL: z.string(),
   SUPABASE_SECRET: z.string(),
+  MICROSOFT_CLIENT_ID: z.string(),
+  MICROSOFT_CLIENT_SECRET: z.string(),
 });
 
 export type EnvSchema = z.infer<typeof EnvSchema>;

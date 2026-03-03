@@ -27,12 +27,6 @@ const firstSection = [
     // roles: ["guest", "user", "staff", "admin"],
   },
   {
-    // icon: BarChart3,
-    label: "Schedule",
-    href: "/schedule",
-    // roles: ["guest", "user", "staff", "admin"],
-  },
-  {
     // icon: SlCalender,
     label: "Check List",
     href: "/check-list",
@@ -41,6 +35,18 @@ const firstSection = [
   {
     label: "Review",
     href: "/review",
+  },
+  {
+    // icon: BarChart3,
+    label: "Schedule",
+    href: "/schedule",
+    // roles: ["guest", "user", "staff", "admin"],
+  },
+  {
+    // icon: BarChart3,
+    label: "Members",
+    href: "/members",
+    // roles: ["guest", "user", "staff", "admin"],
   },
 ];
 
