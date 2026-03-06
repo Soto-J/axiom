@@ -46,7 +46,7 @@ function SiteCodeForm({ onSubmit }: { onSubmit: (code: string) => void }) {
     <div className="flex min-h-[60vh] items-center justify-center p-4">
       <Card className="w-full max-w-sm">
         <CardHeader>
-          <CardTitle className="text-center text-xl">Enter Site Code</CardTitle>
+          <CardTitle className="text-center text-xl">Enter Site ID</CardTitle>
         </CardHeader>
         <CardContent>
           <form onSubmit={handleSubmit} className="flex flex-col gap-3">
