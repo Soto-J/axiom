@@ -1,16 +1,20 @@
 "use client";
 
-import { Button } from "@/components/ui/button";
+import { useState } from "react";
 import { ColumnDef } from "@tanstack/react-table";
-import { Check, Pen } from "lucide-react";
 import { z } from "zod";
 
-export type Payment = {
-  id: string;
-  amount: number;
-  status: "pending" | "processing" | "success" | "failed";
-  email: string;
-};
+import { Check, Pen } from "lucide-react";
+
+import EditSiteDialog from "@/modules/schedule/ui/components/dialogs.tsx/edit-site-dialog";
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuGroup,
+  DropdownMenuItem,
+  DropdownMenuTrigger,
+} from "@/components/ui/dropdown-menu";
+import SiteInfoDialog from "../dialogs.tsx/site-info-diallog";
 
 export const ScheduleColumnsSchema = z.object({
   id: z.string(),
@@ -20,8 +24,7 @@ export const ScheduleColumnsSchema = z.object({
   siteId: z.string(),
   techName: z.string(),
   helperTechName: z.string(),
-  techArrivedAt: z.string(),
-  techDepartedAt: z.string(),
+  techStartsAt: z.string(),
   completed: z.boolean(),
   action: z.string(),
 });
@@ -55,23 +58,8 @@ export const columns: ColumnDef<ScheduleColumns>[] = [
     header: "Helper Tech",
   },
   {
-    accessorKey: "techArrivedAt",
-    header: "Tech Arrived",
-  },
-  {
-    accessorKey: "techDepartedAt",
-    header: "Tech Departed",
-  },
-  {
-    accessorKey: "action",
-    header: "Actions",
-    cell: () => {
-      return (
-        <Button variant="ghost">
-          <Pen />
-        </Button>
-      );
-    },
+    accessorKey: "techStartsAt",
+    header: "Tech Starts At",
   },
   {
     accessorKey: "completed",
@@ -79,8 +67,59 @@ export const columns: ColumnDef<ScheduleColumns>[] = [
     cell: () => {
       return (
         <div className="flex items-center justify-center">
-          <Check />
+          <Check className="text-green-600" />
         </div>
+      );
+    },
+  },
+  {
+    accessorKey: "actions",
+    header: "Actions",
+    cell: (row) => {
+      const [editDialogIsOpen, setEditDialogIsOpen] = useState(false);
+      const [siteInfoDialogIsOpen, setSiteInfoDialogIsOpen] = useState(false);
+
+      return (
+        <>
+          <EditSiteDialog
+            isOpen={editDialogIsOpen}
+            onCloseDialog={() => setEditDialogIsOpen(false)}
+          />
+          <SiteInfoDialog
+            isOpen={siteInfoDialogIsOpen}
+            onCloseDialog={() => setSiteInfoDialogIsOpen(false)}
+          />
+
+          <DropdownMenu>
+            <DropdownMenuTrigger>
+              <Pen size={16} className="cursor-pointer" />
+            </DropdownMenuTrigger>
+
+            <DropdownMenuContent>
+              <DropdownMenuGroup>
+                <DropdownMenuItem
+                  onClick={(e) => {
+                    e.stopPropagation();
+                    setSiteInfoDialogIsOpen(true);
+                  }}
+                  className="cursor-pointer"
+                >
+                  Site Info
+                </DropdownMenuItem>
+
+                <DropdownMenuItem
+                  onClick={(e) => {
+                    e.stopPropagation();
+                    setEditDialogIsOpen(true);
+                  }}
+                  className="cursor-pointer"
+                >
+                  Edit
+                </DropdownMenuItem>
+              </DropdownMenuGroup>
+            </DropdownMenuContent>
+          </DropdownMenu>
+        </>
       );
     },
   },

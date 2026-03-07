@@ -2,9 +2,9 @@
 
 import { useState } from "react";
 
-import EditSiteDialog from "../components/edit-site-dialog.tsx";
 import { ScheduleTable } from "../components/schedule-table";
 import { columns, ScheduleColumns } from "../components/schedule-table/columns";
+import EditSiteDialog from "../components/dialogs.tsx/edit-site-dialog";
 
 const PLACE_HOLDER = [
   {
@@ -14,9 +14,7 @@ const PLACE_HOLDER = [
     siteId: "MD42069",
     techName: "Jennifer Surname",
     helperTechName: "Rosemary Surename",
-    techArrivedAt: "9:00 PM",
-    techDepartedAt: "4:20 AM",
-    action: "",
+    techStartsAt: "7:00 PM",
     completed: false,
   },
 ] as ScheduleColumns[];
@@ -25,12 +23,12 @@ export default function ScheduleView() {
   const [dialogIsOpen, setDialogIsOpen] = useState(false);
 
   return (
-    <div>
+    <>
       <EditSiteDialog
         isOpen={dialogIsOpen}
         onCloseDialog={() => setDialogIsOpen(true)}
       />
       <ScheduleTable columns={columns} data={PLACE_HOLDER} />
-    </div>
+    </>
   );
 }

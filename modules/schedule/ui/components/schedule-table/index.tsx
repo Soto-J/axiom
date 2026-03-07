@@ -38,7 +38,7 @@ export function ScheduleTable<TData, TValue>({
           {table.getHeaderGroups().map((headerGroup) => (
             <TableRow key={headerGroup.id}>
               {headerGroup.headers.map((header) => (
-                <TableHead key={header.id} className="">
+                <TableHead key={header.id} className="text-center">
                   {header.isPlaceholder
                     ? null
                     : flexRender(

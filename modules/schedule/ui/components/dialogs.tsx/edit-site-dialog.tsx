@@ -14,17 +14,18 @@ interface EditSiteDialogProps {
   //   initialValues: ProfileGetOne;
 }
 
-export default function EditSiteDialog({}: EditSiteDialogProps) {
+export default function EditSiteDialog({
+  isOpen,
+  onCloseDialog,
+}: EditSiteDialogProps) {
   const form = useForm<z.infer<typeof EditSiteSchema>>({});
 
   return (
     <ResponsiveDialog
       title={"Site"}
       description={""}
-      isOpen={false}
-      onOpenChange={function (isOpen: boolean): void {
-        throw new Error("Function not implemented.");
-      }}
+      isOpen={isOpen}
+      onOpenChange={onCloseDialog}
     >
       SiteForm
     </ResponsiveDialog>
