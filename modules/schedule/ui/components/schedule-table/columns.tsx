@@ -6,6 +6,7 @@ import { z } from "zod";
 
 import { Check, Pen } from "lucide-react";
 
+import SiteInfoDialog from "../dialogs.tsx/site-info-diallog";
 import EditSiteDialog from "@/modules/schedule/ui/components/dialogs.tsx/edit-site-dialog";
 import {
   DropdownMenu,
@@ -14,7 +15,6 @@ import {
   DropdownMenuItem,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
-import SiteInfoDialog from "../dialogs.tsx/site-info-diallog";
 
 export const ScheduleColumnsSchema = z.object({
   id: z.string(),
@@ -85,6 +85,7 @@ export const columns: ColumnDef<ScheduleColumns>[] = [
             isOpen={editDialogIsOpen}
             onCloseDialog={() => setEditDialogIsOpen(false)}
           />
+
           <SiteInfoDialog
             isOpen={siteInfoDialogIsOpen}
             onCloseDialog={() => setSiteInfoDialogIsOpen(false)}

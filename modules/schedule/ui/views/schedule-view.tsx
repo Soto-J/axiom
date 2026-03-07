@@ -1,10 +1,7 @@
 "use client";
 
-import { useState } from "react";
-
 import { ScheduleTable } from "../components/schedule-table";
 import { columns, ScheduleColumns } from "../components/schedule-table/columns";
-import EditSiteDialog from "../components/dialogs.tsx/edit-site-dialog";
 
 const PLACE_HOLDER = [
   {
@@ -20,14 +17,8 @@ const PLACE_HOLDER = [
 ] as ScheduleColumns[];
 
 export default function ScheduleView() {
-  const [dialogIsOpen, setDialogIsOpen] = useState(false);
-
   return (
     <>
-      <EditSiteDialog
-        isOpen={dialogIsOpen}
-        onCloseDialog={() => setDialogIsOpen(true)}
-      />
       <ScheduleTable columns={columns} data={PLACE_HOLDER} />
     </>
   );
